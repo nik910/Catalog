@@ -1,5 +1,5 @@
 import React from 'react';
-import {ListView, StyleSheet, View, Text} from 'react-native';
+import {ListView, StyleSheet, View} from 'react-native';
 import CategoryProduct from './CategoryProduct';
 import PropertiesProduct from './PropertiesProduct';
 
@@ -49,7 +49,7 @@ export default class StockListView extends React.Component {
         dataSource = {table}
         renderRow={(rowData) => <View>{rowData}</View>} />
       </View>
-    )
+    );
   }
 }
 

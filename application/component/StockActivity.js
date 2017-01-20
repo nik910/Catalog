@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import StockSearch from './StockSearch'
 import StockListView from './StockListView'
 import product from '../data/products';
-import {ListView, StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 
 export default class StockActivity extends React.Component {
   constructor(props) {

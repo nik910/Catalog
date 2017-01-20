@@ -13,20 +13,43 @@ export default class PropertiesProduct extends React.Component{
 
     if(this.props.properties.c === true){
       return(
-        <View style = {{flexDirection: 'row'}}>
-        <Text style = {{fontSize: 15, color: 'white', width: 100}}>{name}</Text>
-        <Text style = {{fontSize: 15, color: 'white'}}>{price}</Text>
+        <View style = {style.productProperties}>
+          <Text style = {style.inStockName}>{name}</Text>
+          <Text style = {style.price}>{price}</Text>
         </View>
       );
     }
 
     else{
       return(
-        <View style = {{flexDirection: 'row'}}>
-        <Text style = {{fontSize: 15, color: 'red', width: 100}}>{name}</Text>
-        <Text style = {{fontSize: 15, color: 'white'}}>{price}</Text>
+        <View style = {style.productProperties}>
+          <Text style = {style.notInStockName}>{name}</Text>
+          <Text style = {style.price}>{price}</Text>
         </View>
       );
     }
   }
 }
+
+const style = StyleSheet.create({
+  productProperties:{
+    flexDirection: 'row',
+  },
+
+  inStockName:{
+    fontSize: 15,
+    color: 'white',
+    width: 100,
+  },
+
+  notInStockName:{
+    fontSize: 15,
+    color: 'red',
+    width: 100,
+  },
+
+  price:{
+    fontSize: 15,
+    color: 'white',
+  },
+})

@@ -22,16 +22,16 @@ export default class StockSearch extends React.Component {
   render() {
     return(
       <View style = {styles.searchBar}>
-        <TextInput style = {{height: 40}}
+        <TextInput style = {styles.searchText}
           placeholder = "Search"
           onChangeText = {(ans) => this.setState({text:ans})}/>
-          <CheckBox style = {{height: 20}}
-            label= 'Show items in stock'
-            checked={this.state.isChecked}
-            onChange={() => this.handleCheckBox()}
-          />
+        <CheckBox style = {styles.checkbox}
+          label= 'Show items in stock'
+          checked={this.state.isChecked}
+          onChange={() => this.handleCheckBox()}
+        />
       </View>
-    )
+    );
   }
 }
 
@@ -41,5 +41,13 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     flexGrow:2,
     backgroundColor:'white',
+  },
+
+  searchText:{
+    height: 40,
+  },
+
+  checkbox:{
+    height: 20,
   },
 })
