@@ -1,0 +1,45 @@
+import React from 'react';
+import {View, StyleSheet, TextInput} from 'react-native';
+import CheckBox from 'react-native-checkbox';
+
+export default class StockSearch extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      text: '',
+      isChecked: false,
+    }
+  }
+
+  handleCheckBox = () => {
+    this.setState({
+      isChecked: !this.state.isChecked
+    }, () => {
+      this.props.onChange(this.state.isChecked);
+    });
+  }
+
+  render() {
+    return(
+      <View style = {styles.searchBar}>
+        <TextInput style = {{height: 40}}
+          placeholder = "Search"
+          onChangeText = {(ans) => this.setState({text:ans})}/>
+          <CheckBox style = {{height: 20}}
+            label= 'Show items in stock'
+            checked={this.state.isChecked}
+            onChange={() => this.handleCheckBox()}
+          />
+      </View>
+    )
+  }
+}
+
+const styles = StyleSheet.create({
+  searchBar:{
+    marginTop: 20,
+    marginLeft: 10,
+    flexGrow:2,
+    backgroundColor:'white',
+  },
+})
