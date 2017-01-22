@@ -21,6 +21,9 @@ export default class StockListView extends React.Component {
     if(this.props.searchText !== ""){
       let re = new RegExp("\w*" + this.props.searchText + "\w*");
       for(let x=0;x<product.length;x++){
+        if(this.props.inStock === true && product[x].stocked === false)
+          continue;
+          
         if(product[x].name.match(re)){
           let o = {
             a : product[x].name,
