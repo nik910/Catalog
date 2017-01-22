@@ -1,5 +1,6 @@
 import React from 'react';
 import {ListView, StyleSheet, View, Text} from 'react-native';
+import CheckBox from 'react-native-checkbox';
 
 export default class PropertiesProduct extends React.Component{
   constructor(props){
@@ -14,6 +15,9 @@ export default class PropertiesProduct extends React.Component{
     if(this.props.properties.c === true){
       return(
         <View style = {style.productProperties}>
+          <CheckBox style = {style.checkbox}
+            label = ""
+          />
           <Text style = {style.inStockName}>{name}</Text>
           <Text style = {style.price}>{price}</Text>
         </View>
@@ -23,6 +27,9 @@ export default class PropertiesProduct extends React.Component{
     else{
       return(
         <View style = {style.productProperties}>
+          <CheckBox style = {style.checkbox}
+            label = ""
+          />
           <Text style = {style.notInStockName}>{name}</Text>
           <Text style = {style.price}>{price}</Text>
         </View>
@@ -51,5 +58,9 @@ const style = StyleSheet.create({
   price:{
     fontSize: 15,
     color: 'white',
+  },
+
+  checkbox:{
+    height: 20,
   },
 })

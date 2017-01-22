@@ -1,5 +1,5 @@
 import React from 'react';
-import {ListView, StyleSheet, View} from 'react-native';
+import {ListView, StyleSheet, View, Text} from 'react-native';
 import CategoryProduct from './CategoryProduct';
 import PropertiesProduct from './PropertiesProduct';
 
@@ -23,7 +23,7 @@ export default class StockListView extends React.Component {
       for(let x=0;x<product.length;x++){
         if(this.props.inStock === true && product[x].stocked === false)
           continue;
-          
+
         if(product[x].name.match(re)){
           let o = {
             a : product[x].name,
@@ -61,6 +61,10 @@ export default class StockListView extends React.Component {
         lastIndex = product[x].category;
       }
       console.log(table);
+    }
+
+    if(table.length === 0){
+      table.push(<Text style = {{color: 'white'}}>NO ITEM FOUND</Text>);
     }
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     table = ds.cloneWithRows(table);
