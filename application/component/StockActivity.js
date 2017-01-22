@@ -21,11 +21,17 @@ export default class StockActivity extends React.Component {
     })
   }
 
+  handleSearchText = (text) => {
+    this.setState({
+      text: text,
+    })
+  }
+
   render() {
     return (
       <View style = {styles.mainContainer}>
-        <StockSearch onChange={this.handleCheckBox} />
-        <StockListView inStock={this.state.isChecked} prod = {product}/>
+        <StockSearch onCheckboxChange={this.handleCheckBox} handleSearchText={this.handleSearchText} />
+        <StockListView inStock={this.state.isChecked} prod={product} searchText={this.state.text} />
       </View>
     );
   }

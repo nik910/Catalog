@@ -7,7 +7,7 @@ export default class CategoryProduct extends React.Component{
   }
 
   render(){
-    var category = this.props.prodCategory;
+    let category = this.props.prodCategory;
     console.log(category);
 
     return(

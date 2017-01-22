@@ -15,8 +15,15 @@ export default class StockSearch extends React.Component {
     this.setState({
       isChecked: !this.state.isChecked
     }, () => {
-      this.props.onChange(this.state.isChecked);
+      this.props.onCheckboxChange(this.state.isChecked);
     });
+  }
+
+  handleSearchText = (text) => {
+    this.setState({
+      text: text,
+    });
+    this.props.handleSearchText(text);
   }
 
   render() {
@@ -24,7 +31,7 @@ export default class StockSearch extends React.Component {
       <View style = {styles.searchBar}>
         <TextInput style = {styles.searchText}
           placeholder = "Search"
-          onChangeText = {(ans) => this.setState({text:ans})}/>
+          onChangeText = {(text) => this.handleSearchText(text)}/>
         <CheckBox style = {styles.checkbox}
           label= 'Show items in stock'
           checked={this.state.isChecked}
