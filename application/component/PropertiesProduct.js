@@ -5,6 +5,19 @@ import CheckBox from 'react-native-checkbox';
 export default class PropertiesProduct extends React.Component{
   constructor(props){
     super(props);
+
+    this.state = {
+      unStockCheckBox: false,
+      StockCheckBox: true,
+    }
+  }
+
+  handleUnStockedCheckBox = () => {
+    this.setState({
+      unStockCheckBox: this.state.unStockCheckBox
+    }, () => {
+      alert('This item is out of stock');
+    });
   }
 
   render(){
@@ -29,6 +42,8 @@ export default class PropertiesProduct extends React.Component{
         <View style = {style.productProperties}>
           <CheckBox style = {style.checkbox}
             label = ""
+            checked = {this.state.unStockCheckBox}
+            onChange={() => this.handleUnStockedCheckBox()}
           />
           <Text style = {style.notInStockName}>{name}</Text>
           <Text style = {style.price}>{price}</Text>
@@ -41,11 +56,13 @@ export default class PropertiesProduct extends React.Component{
 const style = StyleSheet.create({
   productProperties:{
     flexDirection: 'row',
+    marginLeft: 10,
+    marginTop: 10,
   },
 
   inStockName:{
     fontSize: 15,
-    color: 'white',
+    color: 'black',
     width: 100,
   },
 
@@ -57,7 +74,7 @@ const style = StyleSheet.create({
 
   price:{
     fontSize: 15,
-    color: 'white',
+    color: 'black',
   },
 
   checkbox:{

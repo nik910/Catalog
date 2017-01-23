@@ -12,6 +12,7 @@ export default class StockActivity extends React.Component {
       text: '',
       isChecked: false,
       products: product,
+      // listOfItemsInCart: [];
     }
   }
 
@@ -31,15 +32,17 @@ export default class StockActivity extends React.Component {
     return (
       <View style = {styles.mainContainer}>
         <StockSearch onCheckboxChange={this.handleCheckBox} handleSearchText={this.handleSearchText} />
-        <StockListView inStock={this.state.isChecked} prod={product} searchText={this.state.text} />
+        <StockListView inStock={this.state.isChecked} prod={product} searchText={this.state.text} listOfItemsInCart={this.state.listOfItemsInCart} />
         <View style = {styles.buttons}>
           <View style = {styles.buttonAddToCart}>
             <Button
+              color = "#ed6565"
               title="Add to Cart"
             />
           </View>
           <View style = {styles.buttonCheckOut}>
             <Button
+              color = "#ed6565"
               title="Checkout"
             />
           </View>
@@ -53,6 +56,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     flexGrow: 1,
     flexDirection: 'column',
+    backgroundColor: '#184ca0',
   },
 
   buttons: {

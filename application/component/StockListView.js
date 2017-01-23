@@ -13,24 +13,33 @@ export default class StockListView extends React.Component {
     }
   }
 
+
   render(){
 
     let table = [];
     let product = this.props.prod;
+    let productCategory = [];
+
+    for(let x=0;x<product.length;x++){
+      productCategory[product[x].category] = false;
+    }
 
     if(this.props.searchText !== ""){
-      let re = new RegExp("\w*" + this.props.searchText + "\w*");
+      let re = new RegExp("\w*" + this.props.searchText.toLowerCase() + "\w*");
       for(let x=0;x<product.length;x++){
         if(this.props.inStock === true && product[x].stocked === false)
           continue;
 
-        if(product[x].name.match(re)){
+        if((product[x].name.toLowerCase()).match(re)){
           let o = {
             a : product[x].name,
             b : product[x].price,
             c : product[x].stocked,
           }
-
+          if(productCategory[product[x].category]===false){
+            table.push(<CategoryProduct prodCategory = {product[x].category}/>);
+            productCategory[product[x].category] = true;
+          }
           table.push(<PropertiesProduct properties = {o}/>);
         }
       }
@@ -40,9 +49,7 @@ export default class StockListView extends React.Component {
       table = screen(this);
     }
 
-    if(table.length === 0){
-      table.push(<Text style = {{color: 'white'}}>NO ITEM FOUND</Text>);
-    }
+
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     table = ds.cloneWithRows(table);
 
@@ -59,7 +66,7 @@ export default class StockListView extends React.Component {
 const styles = StyleSheet.create({
   mainBody:{
     flexGrow:1,
-    backgroundColor: 'black',
+    backgroundColor: '#90b1e5',
     flexDirection: 'row',
     height: 150,
   },

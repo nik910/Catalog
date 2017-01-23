@@ -20,6 +20,7 @@ const style = StyleSheet.create({
   category:{
     fontSize: 20,
     fontWeight: 'bold',
-    color: 'yellow',
+    color: 'black',
+    padding: 10,
   },
 })
