@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import StockActivity from './application/component/StockActivity'
+import MainApp from './application/component/MainApp'
 import {AppRegistry} from 'react-native';
 
 class AwesomeProject extends Component{
@@ -9,7 +9,7 @@ class AwesomeProject extends Component{
 
   render() {
     return(
-      <StockActivity />
+      <MainApp/>
     );
   }
 }

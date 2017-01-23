@@ -31,10 +31,11 @@ export default class StockListView extends React.Component {
           continue;
 
         if((product[x].name.toLowerCase()).match(re)){
-          let o = {
-            a : product[x].name,
-            b : product[x].price,
-            c : product[x].stocked,
+          let productDetails = {
+            category : product[x].category,
+            name : product[x].name,
+            price : product[x].price,
+            stocked : product[x].stocked,
           }
           if(productCategory[product[x].category]===false){
             table.push(<CategoryProduct prodCategory = {product[x].category}/>);
@@ -88,13 +89,13 @@ const screen = (that) => {
     if(product[x].category !== lastIndex){
       table.push(<CategoryProduct prodCategory = {product[x].category}/>);
     }
-    let o = {
-      a : product[x].name,
-      b : product[x].price,
-      c : product[x].stocked,
+    let productDetails = {
+      category : product[x].category,
+      name : product[x].name,
+      price : product[x].price,
+      stocked : product[x].stocked,
     }
-
-    table.push(<PropertiesProduct properties = {o}/>);
+    table.push(<PropertiesProduct properties = {productDetails}/>);
 
 
     lastIndex = product[x].category;

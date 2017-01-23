@@ -3,6 +3,7 @@ import StockSearch from './StockSearch'
 import StockListView from './StockListView'
 import product from '../data/products';
 import {StyleSheet, View, Button} from 'react-native';
+import {Actions} from 'react-native-router-flux';
 
 export default class StockActivity extends React.Component {
   constructor(props) {

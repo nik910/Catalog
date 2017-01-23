@@ -50,8 +50,6 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     height: 80,
     backgroundColor:'#184ca0',
-
-
   },
 
   searchText:{

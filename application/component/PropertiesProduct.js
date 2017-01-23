@@ -1,6 +1,8 @@
 import React from 'react';
-import {ListView, StyleSheet, View, Text} from 'react-native';
+import {ListView, StyleSheet, View, Text, TouchableHighlight} from 'react-native';
 import CheckBox from 'react-native-checkbox';
+import {Actions} from 'react-native-router-flux';
+import ProductDetails from './ProductDetails';
 
 export default class PropertiesProduct extends React.Component{
   constructor(props){
@@ -22,16 +24,27 @@ export default class PropertiesProduct extends React.Component{
 
   render(){
 
-    const name = this.props.properties.a;
-    const price = this.props.properties.b;
+    const name = this.props.properties.name;
+    const price = this.props.properties.price;
+    const category = this.props.properties.category;
 
-    if(this.props.properties.c === true){
+    // console.log(name);
+
+    let details = {
+      name: name,
+      price: price,
+      category: category,
+    }
+
+
+
+    if(this.props.properties.stocked === true){
       return(
         <View style = {style.productProperties}>
           <CheckBox style = {style.checkbox}
             label = ""
           />
-          <Text style = {style.inStockName}>{name}</Text>
+          <Text style = {style.inStockName} onPress={() => Actions.productDetails(details)}>{name}</Text>
           <Text style = {style.price}>{price}</Text>
         </View>
       );
@@ -45,7 +58,7 @@ export default class PropertiesProduct extends React.Component{
             checked = {this.state.unStockCheckBox}
             onChange={() => this.handleUnStockedCheckBox()}
           />
-          <Text style = {style.notInStockName}>{name}</Text>
+          <Text style = {style.notInStockName} onPress={() => Actions.productDetails(details)}>{name}</Text>
           <Text style = {style.price}>{price}</Text>
         </View>
       );
