@@ -41,7 +41,7 @@ export default class StockListView extends React.Component {
             table.push(<CategoryProduct prodCategory = {product[x].category}/>);
             productCategory[product[x].category] = true;
           }
-          table.push(<PropertiesProduct properties = {o}/>);
+          table.push(<PropertiesProduct properties = {productDetails}/>);
         }
       }
     }
