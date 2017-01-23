@@ -33,12 +33,16 @@ export default class StockActivity extends React.Component {
         <StockSearch onCheckboxChange={this.handleCheckBox} handleSearchText={this.handleSearchText} />
         <StockListView inStock={this.state.isChecked} prod={product} searchText={this.state.text} />
         <View style = {styles.buttons}>
-          <Button style = {styles.buttonAddToCart}
-            title="Add to Cart"
-          />
-          <Button style = {styles.buttonCheckOut}
-            title="Checkout"
-          />
+          <View style = {styles.buttonAddToCart}>
+            <Button
+              title="Add to Cart"
+            />
+          </View>
+          <View style = {styles.buttonCheckOut}>
+            <Button
+              title="Checkout"
+            />
+          </View>
         </View>
       </View>
     );
@@ -47,14 +51,13 @@ export default class StockActivity extends React.Component {
 
 const styles = StyleSheet.create({
   mainContainer: {
-    flex: 1,
+    flexGrow: 1,
     flexDirection: 'column',
   },
 
   buttons: {
-    flexGrow: 1,
-    marginBottom: 10,
-    // flexDirection: 'reve',
+    height: 40,
+    flexDirection: 'row',
   },
 
   buttonAddToCart: {

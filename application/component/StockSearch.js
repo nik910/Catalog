@@ -46,7 +46,8 @@ const styles = StyleSheet.create({
   searchBar:{
     marginTop: 20,
     marginLeft: 10,
-    flexGrow:2,
+    // flexGrow:2,
+    height: 80,
     backgroundColor:'white',
   },
 
