@@ -13,7 +13,7 @@ export default class StockActivity extends React.Component {
       text: '',
       isChecked: false,
       products: product,
-      // listOfItemsInCart: [];
+      listOfItemsToBuy: [],
     }
   }
 
@@ -29,24 +29,27 @@ export default class StockActivity extends React.Component {
     })
   }
 
+  handleCheckedItems = (checkedItems) => {
+    this.setState({
+      listOfItemsToBuy: checkedItems,
+    });
+  }
+
   render() {
+    let BillingPageDetails = {
+      listOfItemsToBuy: this.state.listOfItemsToBuy,
+      allProducts: this.state.products,
+    }
     return (
       <View style = {styles.mainContainer}>
         <StockSearch onCheckboxChange={this.handleCheckBox} handleSearchText={this.handleSearchText} />
-        <StockListView inStock={this.state.isChecked} prod={product} searchText={this.state.text} listOfItemsInCart={this.state.listOfItemsInCart} />
+        <StockListView inStock={this.state.isChecked} prod={product} searchText={this.state.text} listOfItemsToBuy={this.handleCheckedItems} />
         <View style = {styles.buttons}>
-          <View style = {styles.buttonAddToCart}>
-            <Button
-              color = "#ed6565"
-              title="Add to Cart"
-            />
-          </View>
-          <View style = {styles.buttonCheckOut}>
-            <Button
-              color = "#ed6565"
-              title="Checkout"
-            />
-          </View>
+          <Button
+            color="#ed6565"
+            title="Buy Items"
+            onPress={() => Actions.billingScreen(BillingPageDetails)}
+          />
         </View>
       </View>
     );
@@ -62,7 +65,7 @@ const styles = StyleSheet.create({
 
   buttons: {
     height: 40,
-    flexDirection: 'row',
+    flexDirection: 'column',
   },
 
   buttonAddToCart: {

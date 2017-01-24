@@ -10,7 +10,7 @@ export default class PropertiesProduct extends React.Component{
 
     this.state = {
       unStockCheckBox: false,
-      StockCheckBox: true,
+      stockCheckBox: false,
     }
   }
 
@@ -22,12 +22,20 @@ export default class PropertiesProduct extends React.Component{
     });
   }
 
+  handleCheckedItems = () => {
+    this.setState({
+      stockCheckBox: !this.state.stockCheckBox,
+    }, () => {
+      this.props.handleCheckedItems(this.props.properties.id);
+    });
+  }
+
   render(){
 
     const name = this.props.properties.name;
     const price = this.props.properties.price;
     const category = this.props.properties.category;
-
+    const id = this.props.properties.id;
     // console.log(name);
 
     let details = {
@@ -36,13 +44,13 @@ export default class PropertiesProduct extends React.Component{
       category: category,
     }
 
-
-
     if(this.props.properties.stocked === true){
       return(
         <View style = {style.productProperties}>
           <CheckBox style = {style.checkbox}
             label = ""
+            checked = {this.state.stockCheckBox}
+            onChange = {() => this.handleCheckedItems()}
           />
           <Text style = {style.inStockName} onPress={() => Actions.productDetails(details)}>{name}</Text>
           <Text style = {style.price}>{price}</Text>

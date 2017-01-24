@@ -22,8 +22,10 @@ export default class StockSearch extends React.Component {
   handleSearchText = (text) => {
     this.setState({
       text: text,
+    }, () => {
+      this.props.handleSearchText(text);
     });
-    this.props.handleSearchText(text);
+
   }
 
   render() {

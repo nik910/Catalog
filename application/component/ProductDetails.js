@@ -15,7 +15,7 @@ export default class ProductDetails extends Component{
           <Button
             color = "#ed6565"
             title = "Go Back"
-            onPress = {() => Actions.stockActivity()}
+            onPress = {() => Actions.pop()}
           />
         </View>
         <View style = {styles.details}>
