@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import {Text, StyleSheet, View, Button} from 'react-native';
+import {Text, StyleSheet, View, Button, TouchableHighlight, Image} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 
 export default class ProductDetails extends Component{
@@ -12,25 +12,22 @@ export default class ProductDetails extends Component{
     return(
       <View style = {styles.detailsMainBody}>
         <View style = {styles.back}>
-          <Button
-            color = "#ed6565"
-            title = "Go Back"
-            onPress = {() => Actions.pop()}
-          />
+          <TouchableHighlight onPress = {() => Actions.pop()}>
+            <Image
+              style = {{padding: 10, width: 40, height: 50}}
+              source = {require('../assets/images/go_back-ileadstar.com_.png')}
+            />
+          </TouchableHighlight>
         </View>
         <View style = {styles.details}>
-          <Text>{this.props.category}</Text>
-          <Text>{this.props.name}</Text>
-          <Text>{this.props.price}</Text>
+          <Text style = {{fontWeight: 'bold', fontSize: 35}}>{this.props.category}</Text>
+          <Text style = {{fontWeight: 'bold', fontSize: 25}}>{this.props.name}</Text>
+          <Text style = {{fontWeight: 'bold', fontSize: 15}}>{this.props.price}</Text>
         </View>
       </View>
     )
   }
 }
-
-// ProductDetails.propTypes = {
-//   name: PropTypes.string
-// }
 
 const styles = StyleSheet.create({
   detailsMainBody: {
@@ -40,13 +37,14 @@ const styles = StyleSheet.create({
   },
 
   back: {
-    height: 50,
+    height: 60,
     backgroundColor:'#184ca0',
     flexDirection: 'row',
     padding: 10,
   },
 
   details: {
+    alignItems: 'center',
     flexGrow: 10,
     backgroundColor: '#90b1e5',
     padding: 10,

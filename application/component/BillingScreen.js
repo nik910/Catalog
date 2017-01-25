@@ -1,5 +1,5 @@
 import React, { Component, PropTypes } from 'react';
-import {Text, StyleSheet, View, Button, ListView} from 'react-native';
+import {Text, StyleSheet, View, Button, ListView, Image, TouchableHighlight} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import BillingScreenView from './BillingScreenView';
 
@@ -39,11 +39,12 @@ export default class BillingScreen extends Component{
     return(
       <View style = {styles.detailsMainBody}>
         <View style = {styles.back}>
-          <Button
-            color = "#ed6565"
-            title = "Go Back"
-            onPress = {() => Actions.pop()}
-          />
+          <TouchableHighlight onPress = {() => Actions.pop()}>
+            <Image
+              style = {{padding: 10, width: 40, height: 50}}
+              source = {require('../assets/images/go_back-ileadstar.com_.png')}
+            />
+          </TouchableHighlight>
         </View>
         <View style = {styles.details}>
           <ListView
@@ -63,7 +64,7 @@ const styles = StyleSheet.create({
   },
 
   back: {
-    height: 50,
+    height: 60,
     backgroundColor:'#184ca0',
     flexDirection: 'row',
     padding: 10,
