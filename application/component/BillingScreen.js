@@ -13,11 +13,36 @@ export default class BillingScreen extends Component{
   }
 
   render(){
+
+    let billingContents = this.makeBillingPage();
+    return(
+      <View style = {styles.detailsMainBody}>
+        {this.renderBackButton()}
+        <View style = {styles.details}>
+          <ListView
+            dataSource = {billingContents}
+            renderRow={(rowData) => <View>{rowData}</View>}/>
+        </View>
+      </View>
+    )
+  }
+
+  renderBackButton = () => {
+    return(
+      <View style = {styles.back}>
+        <TouchableHighlight onPress = {() => Actions.pop()}>
+          <Image
+            style = {{padding: 10, width: 40, height: 50}}
+            source = {require('../assets/images/go_back-ileadstar.com_.png')}
+          />
+        </TouchableHighlight>
+      </View>
+    );
+  }
+  
+  makeBillingPage = () => {
     let listOfItemsToBuy = this.props.listOfItemsToBuy;
     let allProducts = this.props.allProducts;
-    console.log(listOfItemsToBuy);
-    console.log(listOfItemsToBuy.length);
-    console.log(allProducts);
     let billingContents = [];
     billingContents.push(<BillingScreenView name = {'List Of Items'} price = {'Price'} id = {-1}/>)
     let totalPrice = 0;
@@ -35,24 +60,7 @@ export default class BillingScreen extends Component{
     console.log(billingContents);
     const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     billingContents = ds.cloneWithRows(billingContents);
-
-    return(
-      <View style = {styles.detailsMainBody}>
-        <View style = {styles.back}>
-          <TouchableHighlight onPress = {() => Actions.pop()}>
-            <Image
-              style = {{padding: 10, width: 40, height: 50}}
-              source = {require('../assets/images/go_back-ileadstar.com_.png')}
-            />
-          </TouchableHighlight>
-        </View>
-        <View style = {styles.details}>
-          <ListView
-            dataSource = {billingContents}
-            renderRow={(rowData) => <View>{rowData}</View>}/>
-        </View>
-      </View>
-    )
+    return billingContents;
   }
 }
 

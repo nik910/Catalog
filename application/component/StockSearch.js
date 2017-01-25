@@ -11,23 +11,6 @@ export default class StockSearch extends React.Component {
     }
   }
 
-  handleCheckBox = () => {
-    this.setState({
-      isChecked: !this.state.isChecked
-    }, () => {
-      this.props.onCheckboxChange(this.state.isChecked);
-    });
-  }
-
-  handleSearchText = (text) => {
-    this.setState({
-      text: text,
-    }, () => {
-      this.props.handleSearchText(text);
-    });
-
-  }
-
   render() {
     return(
       <View style = {styles.searchBar}>
@@ -43,6 +26,23 @@ export default class StockSearch extends React.Component {
         />
       </View>
     );
+  }
+
+  handleCheckBox = () => {
+    this.setState({
+      isChecked: !this.state.isChecked
+    }, () => {
+      this.props.onCheckboxChange(this.state.isChecked);
+    });
+  }
+
+  handleSearchText = (text) => {
+    this.setState({
+      text: text,
+    }, () => {
+      this.props.handleSearchText(text);
+    });
+
   }
 }
 

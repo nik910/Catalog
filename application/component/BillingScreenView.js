@@ -61,5 +61,4 @@ const style = StyleSheet.create({
     color: 'black',
     width: 150,
   }
-
 })

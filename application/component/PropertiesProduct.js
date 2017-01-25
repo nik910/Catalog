@@ -14,6 +14,65 @@ export default class PropertiesProduct extends React.Component{
     }
   }
 
+  render(){
+    return(
+      <View style = {style.productProperties}>
+        {this.renderCheckBox()}
+        {this.renderName()}
+        <Text style = {style.price}>{this.props.properties.price}</Text>
+      </View>
+    );
+  }
+
+  renderCheckBox = () => {
+
+    if(this.props.properties.stocked === true){
+      return(
+        <CheckBox style = {style.checkbox}
+          label = ""
+          checked = {this.state.stockCheckBox}
+          onChange = {() => this.handleCheckedItems()}
+        />
+      );
+    }
+
+    else{
+      return(
+        <CheckBox style = {style.checkbox}
+          label = ""
+          checked = {this.state.unStockCheckBox}
+          onChange={() => this.handleUnStockedCheckBox()}
+        />
+      );
+    }
+
+  }
+
+  renderName = () => {
+    const name = this.props.properties.name;
+    const price = this.props.properties.price;
+    const category = this.props.properties.category;
+    const id = this.props.properties.id;
+
+    let details = {
+      name: name,
+      price: price,
+      category: category,
+    }
+
+    if(this.props.properties.stocked === true){
+      return(
+        <Text style = {style.inStockName} onPress={() => Actions.productDetails(details)}>{name}</Text>
+      );
+    }
+
+    else{
+      return(
+        <Text style = {style.notInStockName} onPress={() => Actions.productDetails(details)}>{name}</Text>
+      );
+    }
+  }
+
   handleUnStockedCheckBox = () => {
     this.setState({
       unStockCheckBox: this.state.unStockCheckBox
@@ -30,48 +89,6 @@ export default class PropertiesProduct extends React.Component{
     });
   }
 
-  render(){
-
-    const name = this.props.properties.name;
-    const price = this.props.properties.price;
-    const category = this.props.properties.category;
-    const id = this.props.properties.id;
-    // console.log(name);
-
-    let details = {
-      name: name,
-      price: price,
-      category: category,
-    }
-
-    if(this.props.properties.stocked === true){
-      return(
-        <View style = {style.productProperties}>
-          <CheckBox style = {style.checkbox}
-            label = ""
-            checked = {this.state.stockCheckBox}
-            onChange = {() => this.handleCheckedItems()}
-          />
-          <Text style = {style.inStockName} onPress={() => Actions.productDetails(details)}>{name}</Text>
-          <Text style = {style.price}>{price}</Text>
-        </View>
-      );
-    }
-
-    else{
-      return(
-        <View style = {style.productProperties}>
-          <CheckBox style = {style.checkbox}
-            label = ""
-            checked = {this.state.unStockCheckBox}
-            onChange={() => this.handleUnStockedCheckBox()}
-          />
-          <Text style = {style.notInStockName} onPress={() => Actions.productDetails(details)}>{name}</Text>
-          <Text style = {style.price}>{price}</Text>
-        </View>
-      );
-    }
-  }
 }
 
 const style = StyleSheet.create({

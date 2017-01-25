@@ -10,13 +10,15 @@ export default class MainApp extends Component{
     }
 
   render() {
-    return (<Router>
-      <Scene key = "root">
-        <Scene key = "stockActivity" initial component = {StockActivity} hideNavBar/>
-        <Scene key = "productDetails" component = {ProductDetails} hideNavBar/>
-        <Scene key = "billingScreen" component = {BillingScreen} hideNavBar/>
-      </Scene>
-    </Router>);
+    return (
+      <Router>
+        <Scene key = "root">
+          <Scene key = "stockActivity" initial component = {StockActivity} hideNavBar/>
+          <Scene key = "productDetails" component = {ProductDetails} hideNavBar/>
+          <Scene key = "billingScreen" component = {BillingScreen} hideNavBar/>
+        </Scene>
+      </Router>
+  );
 
   }
 }

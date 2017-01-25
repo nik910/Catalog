@@ -17,6 +17,16 @@ export default class StockActivity extends React.Component {
     }
   }
 
+  render() {
+    return (
+      <View style = {styles.mainContainer}>
+        <StockSearch onCheckboxChange={this.handleCheckBox} handleSearchText={this.handleSearchText} />
+        <StockListView inStock={this.state.isChecked} prod={product} searchText={this.state.text} listOfItemsToBuy={this.handleCheckedItems} />
+        {this.renderButton()}
+      </View>
+    );
+  }
+
   handleCheckBox = (isChecked) => {
     this.setState({
       isChecked: isChecked,
@@ -34,16 +44,28 @@ export default class StockActivity extends React.Component {
       listOfItemsToBuy: checkedItems,
     });
   }
+  
+  renderButton = () => {
 
-  render() {
     let BillingPageDetails = {
       listOfItemsToBuy: this.state.listOfItemsToBuy,
       allProducts: this.state.products,
     }
-    return (
-      <View style = {styles.mainContainer}>
-        <StockSearch onCheckboxChange={this.handleCheckBox} handleSearchText={this.handleSearchText} />
-        <StockListView inStock={this.state.isChecked} prod={product} searchText={this.state.text} listOfItemsToBuy={this.handleCheckedItems} />
+
+    if(this.state.listOfItemsToBuy.length===0){
+      return(
+        <View style = {styles.buttons}>
+          <Button
+            color="#ed6565"
+            title="Buy Items"
+            onPress={() => alert('No Item Selected')}
+          />
+        </View>
+      );
+    }
+
+    else{
+      return(
         <View style = {styles.buttons}>
           <Button
             color="#ed6565"
@@ -51,8 +73,8 @@ export default class StockActivity extends React.Component {
             onPress={() => Actions.billingScreen(BillingPageDetails)}
           />
         </View>
-      </View>
-    );
+      );
+    }
   }
 }
 
