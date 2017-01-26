@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
-import StockSearch from './StockSearch'
-import StockListView from './StockListView'
-import product from '../data/products';
-import {StyleSheet, View, Button} from 'react-native';
+import StockSearch from '../StockSearch'
+import StockListView from '../ProductView/StockListView'
+import product from '../../data/products';
+import {View, Button} from 'react-native';
 import {Actions} from 'react-native-router-flux';
+import styles from './MainScreen.style'
 
-export default class StockActivity extends React.Component {
+export default class MainScreen extends React.Component {
   constructor(props) {
     super(props);
 
@@ -44,7 +45,7 @@ export default class StockActivity extends React.Component {
       listOfItemsToBuy: checkedItems,
     });
   }
-  
+
   renderButton = () => {
 
     let BillingPageDetails = {
@@ -77,24 +78,3 @@ export default class StockActivity extends React.Component {
     }
   }
 }
-
-const styles = StyleSheet.create({
-  mainContainer: {
-    flexGrow: 1,
-    flexDirection: 'column',
-    backgroundColor: '#184ca0',
-  },
-
-  buttons: {
-    height: 40,
-    flexDirection: 'column',
-  },
-
-  buttonAddToCart: {
-    flexGrow: 1,
-  },
-
-  buttonCheckOut: {
-    flexGrow: 1,
-  },
-})

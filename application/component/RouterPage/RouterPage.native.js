@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import StockActivity from './StockActivity';
-import ProductDetails from './ProductDetails';
-import BillingScreen from './BillingScreen'
 import {Router, Scene} from 'react-native-router-flux';
+import MainScreen from '../MainScreen';
+import ProductDetails from '../ProductDetails';
+import BillingScreen from '../BillingScreen/BillingScreen'
 
-export default class MainApp extends Component{
+export default class RouterPage extends Component{
   constructor(props){
       super(props);
     }
@@ -13,7 +13,7 @@ export default class MainApp extends Component{
     return (
       <Router>
         <Scene key = "root">
-          <Scene key = "stockActivity" initial component = {StockActivity} hideNavBar/>
+          <Scene key = "mainScreen" initial component = {MainScreen} hideNavBar/>
           <Scene key = "productDetails" component = {ProductDetails} hideNavBar/>
           <Scene key = "billingScreen" component = {BillingScreen} hideNavBar/>
         </Scene>

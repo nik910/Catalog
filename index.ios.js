@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import MainApp from './application/component/MainApp'
+import RouterPage from './application/component/RouterPage'
 import {AppRegistry} from 'react-native';
 
 class AwesomeProject extends Component{
@@ -9,7 +9,7 @@ class AwesomeProject extends Component{
 
   render() {
     return(
-      <MainApp/>
+      <RouterPage/>
     );
   }
 }

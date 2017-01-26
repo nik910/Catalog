@@ -1,7 +1,8 @@
 import React from 'react';
-import {ListView, StyleSheet, View, Text} from 'react-native';
-import CategoryProduct from './CategoryProduct';
-import PropertiesProduct from './PropertiesProduct';
+import {ListView, View, Text} from 'react-native';
+import CategoryProduct from '../CategoryProduct';
+import PropertiesProduct from '../PropertiesProduct';
+import styles from './StockListView.style';
 
 export default class StockListView extends React.Component {
 
@@ -142,13 +143,3 @@ export default class StockListView extends React.Component {
   }
 
 }
-
-
-const styles = StyleSheet.create({
-  mainBody:{
-    flexGrow:1,
-    backgroundColor: '#90b1e5',
-    flexDirection: 'row',
-    height: 150,
-  },
-})

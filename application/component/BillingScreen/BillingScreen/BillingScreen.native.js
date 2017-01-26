@@ -1,7 +1,8 @@
 import React, { Component, PropTypes } from 'react';
-import {Text, StyleSheet, View, Button, ListView, Image, TouchableHighlight} from 'react-native';
+import {Text, View, Button, ListView, Image, TouchableHighlight} from 'react-native';
 import {Actions} from 'react-native-router-flux';
-import BillingScreenView from './BillingScreenView';
+import BillingScreenView from '../BillingScreenView';
+import styles from './BillingScreen.style'
 
 export default class BillingScreen extends Component{
   constructor(props){
@@ -33,13 +34,13 @@ export default class BillingScreen extends Component{
         <TouchableHighlight onPress = {() => Actions.pop()}>
           <Image
             style = {{padding: 10, width: 40, height: 50}}
-            source = {require('../assets/images/go_back-ileadstar.com_.png')}
+            source = {require('../../../assets/images/go_back-ileadstar.com_.png')}
           />
         </TouchableHighlight>
       </View>
     );
   }
-  
+
   makeBillingPage = () => {
     let listOfItemsToBuy = this.props.listOfItemsToBuy;
     let allProducts = this.props.allProducts;
@@ -63,46 +64,3 @@ export default class BillingScreen extends Component{
     return billingContents;
   }
 }
-
-const styles = StyleSheet.create({
-  detailsMainBody: {
-    flexGrow: 1,
-    flexDirection: 'column',
-    backgroundColor: 'white',
-  },
-
-  back: {
-    height: 60,
-    backgroundColor:'#184ca0',
-    flexDirection: 'row',
-    padding: 10,
-  },
-
-  details: {
-    flexGrow: 10,
-    backgroundColor: '#90b1e5',
-    padding: 10,
-  },
-
-  header: {
-    flexDirection: 'row',
-    height: 50,
-    backgroundColor: '#90b1e5',
-    // marginLeft: 10,
-  },
-
-  listOfItems: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    color: 'black',
-    padding: 10,
-    width: 200,
-  },
-
-  price: {
-    fontSize: 15,
-    fontWeight: 'bold',
-    color: 'black',
-    padding: 10,
-  }
-})

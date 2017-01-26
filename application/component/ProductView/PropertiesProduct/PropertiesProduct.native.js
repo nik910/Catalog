@@ -1,8 +1,9 @@
 import React from 'react';
-import {ListView, StyleSheet, View, Text, TouchableHighlight} from 'react-native';
+import {ListView, View, Text, TouchableHighlight} from 'react-native';
 import CheckBox from 'react-native-checkbox';
 import {Actions} from 'react-native-router-flux';
-import ProductDetails from './ProductDetails';
+import ProductDetails from '../../ProductDetails';
+import styles from './PropertiesProduct.style';
 
 export default class PropertiesProduct extends React.Component{
   constructor(props){
@@ -16,10 +17,10 @@ export default class PropertiesProduct extends React.Component{
 
   render(){
     return(
-      <View style = {style.productProperties}>
+      <View style = {styles.productProperties}>
         {this.renderCheckBox()}
         {this.renderName()}
-        <Text style = {style.price}>{this.props.properties.price}</Text>
+        <Text style = {styles.price}>{this.props.properties.price}</Text>
       </View>
     );
   }
@@ -28,7 +29,7 @@ export default class PropertiesProduct extends React.Component{
 
     if(this.props.properties.stocked === true){
       return(
-        <CheckBox style = {style.checkbox}
+        <CheckBox style = {styles.checkbox}
           label = ""
           checked = {this.state.stockCheckBox}
           onChange = {() => this.handleCheckedItems()}
@@ -38,7 +39,7 @@ export default class PropertiesProduct extends React.Component{
 
     else{
       return(
-        <CheckBox style = {style.checkbox}
+        <CheckBox style = {styles.checkbox}
           label = ""
           checked = {this.state.unStockCheckBox}
           onChange={() => this.handleUnStockedCheckBox()}
@@ -62,13 +63,13 @@ export default class PropertiesProduct extends React.Component{
 
     if(this.props.properties.stocked === true){
       return(
-        <Text style = {style.inStockName} onPress={() => Actions.productDetails(details)}>{name}</Text>
+        <Text style = {styles.inStockName} onPress={() => Actions.productDetails(details)}>{name}</Text>
       );
     }
 
     else{
       return(
-        <Text style = {style.notInStockName} onPress={() => Actions.productDetails(details)}>{name}</Text>
+        <Text style = {styles.notInStockName} onPress={() => Actions.productDetails(details)}>{name}</Text>
       );
     }
   }
@@ -90,32 +91,3 @@ export default class PropertiesProduct extends React.Component{
   }
 
 }
-
-const style = StyleSheet.create({
-  productProperties:{
-    flexDirection: 'row',
-    marginLeft: 10,
-    marginTop: 10,
-  },
-
-  inStockName:{
-    fontSize: 15,
-    color: 'black',
-    width: 100,
-  },
-
-  notInStockName:{
-    fontSize: 15,
-    color: 'red',
-    width: 100,
-  },
-
-  price:{
-    fontSize: 15,
-    color: 'black',
-  },
-
-  checkbox:{
-    height: 20,
-  },
-})
