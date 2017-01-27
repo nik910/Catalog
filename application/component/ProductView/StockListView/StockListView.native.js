@@ -10,7 +10,6 @@ export default class StockListView extends React.Component {
     super(props);
 
     this.state = {
-      ds: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),
       checkedItems: [],
     }
   }
@@ -18,44 +17,56 @@ export default class StockListView extends React.Component {
   render(){
 
     let table = this.computeStockListView();
+    console.log(this.state.table);
 
     return(
       <View style = {styles.mainBody}>
       <ListView
-        dataSource = {table}
-        renderRow={(rowData) => <View>{rowData}</View>} />
+        dataSource={table}
+        renderRow={this.renderRow}
+        renderSectionHeader={this.renderSectionHeader}/>
       </View>
     );
   }
 
+  renderRow = (productDetails) => {
+    return(
+      <View><PropertiesProduct properties = {productDetails} handleCheckedItems={this.handleCheckedItems}/></View>
+    );
+  }
+
+  renderSectionHeader = (sectionData, category) => {
+      return(
+        <View><CategoryProduct prodCategory = {category}/></View>
+      )
+  }
+
   searchScreen = () => {
     let table = [];
-    let productCategory = [];
     let product = this.props.prod;
-
-    for(let x=0;x<product.length;x++){
-      productCategory[product[x].category] = false;
-    }
 
     let re = new RegExp("\w*" + this.props.searchText.toLowerCase() + "\w*");
     for(let x=0;x<product.length;x++){
-      if(this.props.inStock === true && product[x].stocked === false)
+      if(this.props.inStock === true && product[x].stocked === false){
         continue;
+      }
 
       if((product[x].name.toLowerCase()).match(re)){
-        let productDetails = {
+        if(!table[product[x].category]){
+          table[product[x].category] = [];
+        }
+
+        let properties = {
+          name: product[x].name,
+          price: product[x].price,
+          stocked: product[x].stocked,
+          category: product[x].category,
           id: x,
-          category : product[x].category,
-          name : product[x].name,
-          price : product[x].price,
-          stocked : product[x].stocked,
         }
-        if(productCategory[product[x].category]===false){
-          table.push(<CategoryProduct prodCategory = {product[x].category}/>);
-          productCategory[product[x].category] = true;
-        }
-        table.push(<PropertiesProduct properties = {productDetails} handleCheckedItems={this.handleCheckedItems}/>);
+
+        table[product[x].category].push(properties);
       }
+
     }
 
     return table;
@@ -63,32 +74,27 @@ export default class StockListView extends React.Component {
   }
 
   screen = () => {
-
     let table = [];
-    let lastIndex = "";
     let product = this.props.prod;
 
-    console.log(this.props.inStock);
-    console.log(product.length);
     for(let x=0;x<product.length;x++){
-
-      if(this.props.inStock === true && product[x].stocked === false)
+      if(this.props.inStock === true && product[x].stocked === false){
         continue;
-
-      if(product[x].category !== lastIndex){
-        table.push(<CategoryProduct prodCategory = {product[x].category}/>);
       }
-      let productDetails = {
+
+      if(!table[product[x].category]){
+        table[product[x].category] = [];
+      }
+
+      let properties = {
+        name: product[x].name,
+        price: product[x].price,
+        stocked: product[x].stocked,
+        category: product[x].category,
         id: x,
-        category : product[x].category,
-        name : product[x].name,
-        price : product[x].price,
-        stocked : product[x].stocked,
       }
-      table.push(<PropertiesProduct properties = {productDetails} handleCheckedItems={this.handleCheckedItems}/>);
 
-
-      lastIndex = product[x].category;
+      table[product[x].category].push(properties);
     }
 
     return table;
@@ -105,8 +111,12 @@ export default class StockListView extends React.Component {
       table = this.screen();
     }
 
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    return ds.cloneWithRows(table);
+    const ds = new ListView.DataSource({
+      rowHasChanged: (r1, r2) => r1 !== r2,
+      sectionHeaderHasChanged: (s1, s2) => s1 !== s2
+    });
+
+    return ds.cloneWithRowsAndSections(table);
   }
 
   remove = (oldArr, index) => {
@@ -122,6 +132,7 @@ export default class StockListView extends React.Component {
   }
 
   handleCheckedItems = (id) => {
+    console.log(id);
     if(this.state.checkedItems.indexOf(id)>=0){
       let index = this.state.checkedItems.indexOf(id);
       console.log(index);
@@ -129,6 +140,7 @@ export default class StockListView extends React.Component {
       this.setState({
         checkedItems: newArr,
       }, () => {
+        console.log(this.state.checkedItems);
         this.props.listOfItemsToBuy(this.state.checkedItems);
       });
     }
@@ -137,6 +149,7 @@ export default class StockListView extends React.Component {
       this.setState({
         checkedItems: this.state.checkedItems.concat(id),
       }, () => {
+        console.log(this.state.checkedItems);
         this.props.listOfItemsToBuy(this.state.checkedItems);
       });
     }
