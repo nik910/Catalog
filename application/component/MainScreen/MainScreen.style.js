@@ -9,7 +9,8 @@ export default styles = StyleSheet.create({
 
   buttons: {
     height: 40,
-    flexDirection: 'column',
+    flexDirection: 'row',
+    justifyContent: 'center',
   },
 
   buttonAddToCart: {

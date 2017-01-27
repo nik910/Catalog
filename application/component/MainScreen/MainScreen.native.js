@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import StockSearch from '../StockSearch'
-import StockListView from '../ProductView/StockListView'
-import product from '../../data/products';
 import {View, Button} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import styles from './MainScreen.style'
+import StockSearch from '../StockSearch'
+import StockListView from '../ProductView/StockListView'
+import product from '../../data/products';
+import Touchable from '../../Wrappers/Touchable'
 
 export default class MainScreen extends React.Component {
   constructor(props) {
@@ -56,9 +57,9 @@ export default class MainScreen extends React.Component {
     if(this.state.listOfItemsToBuy.length===0){
       return(
         <View style = {styles.buttons}>
-          <Button
-            color="#ed6565"
-            title="Buy Items"
+          <Touchable
+            color={'#ed6565'}
+            text={'Buy Items'}
             onPress={() => alert('No Item Selected')}
           />
         </View>
@@ -68,11 +69,10 @@ export default class MainScreen extends React.Component {
     else{
       return(
         <View style = {styles.buttons}>
-          <Button
-            color="#ed6565"
-            title="Buy Items"
-            onPress={() => Actions.billingScreen(BillingPageDetails)}
-          />
+        <Touchable
+          text={'Buy Items'}
+          onPress={() => Actions.billingScreen(BillingPageDetails)}
+        />
         </View>
       );
     }

@@ -22,27 +22,9 @@ export default styles = StyleSheet.create({
     padding: 10,
   },
 
-  // ios:{
-  //   back: {
-  //     height: 60,
-  //     backgroundColor:'#184ca0',
-  //     flexDirection: 'row',
-  //     padding: 10,
-  //   },
-  // },
-  //
-  // android: {
-  //   back: {
-  //     height: 80,
-  //     backgroundColor:'#184ca0',
-  //     flexDirection: 'row',
-  //     padding: 10,
-  //   },
-  // },
-
   details: {
     flexGrow: 10,
-    backgroundColor: '#90b1e5',
+    backgroundColor: '#ccdfff',
     padding: 10,
   },
 

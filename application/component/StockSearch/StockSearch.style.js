@@ -11,7 +11,10 @@ export default styles = StyleSheet.create({
   searchText:{
     padding: 5,
     height: 40,
-    color: 'white',
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: 20,
+    includeFontPadding: false,
   },
 
   checkbox:{

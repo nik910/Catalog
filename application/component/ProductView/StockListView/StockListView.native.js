@@ -37,7 +37,7 @@ export default class StockListView extends React.Component {
 
   renderSectionHeader = (sectionData, category) => {
       return(
-        <View><CategoryProduct prodCategory = {category}/></View>
+        <View style = {styles.category}><CategoryProduct prodCategory = {category}/></View>
       )
   }
 

@@ -24,7 +24,7 @@ export default styles = StyleSheet.create({
   details: {
     alignItems: 'center',
     flexGrow: 10,
-    backgroundColor: '#90b1e5',
+    backgroundColor: '#ccdfff',
     padding: 10,
   },
 

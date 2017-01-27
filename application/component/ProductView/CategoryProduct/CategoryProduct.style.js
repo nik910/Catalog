@@ -6,5 +6,6 @@ export default styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     padding: 10,
+    
   },
 })

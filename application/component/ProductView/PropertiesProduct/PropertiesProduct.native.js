@@ -32,6 +32,7 @@ export default class PropertiesProduct extends React.Component{
         <CheckBox style = {styles.checkbox}
           label = ""
           checked = {this.state.stockCheckBox}
+          underlayColor = "transparent"
           onChange = {() => this.handleCheckedItems()}
         />
       );
@@ -42,6 +43,7 @@ export default class PropertiesProduct extends React.Component{
         <CheckBox style = {styles.checkbox}
           label = ""
           checked = {this.state.unStockCheckBox}
+          underlayColor = "transparent"
           onChange={() => this.handleUnStockedCheckBox()}
         />
       );

@@ -16,6 +16,8 @@ export default class StockSearch extends React.Component {
     return(
       <View style = {styles.searchBar}>
         <TextInput style = {styles.searchText}
+          autoCapitalize = "none"
+          underlineColorAndroid='transparent'
           placeholder = "Search"
           placeholderTextColor = 'black'
           onChangeText = {(text) => this.handleSearchText(text)}/>
@@ -23,6 +25,7 @@ export default class StockSearch extends React.Component {
           label= 'Show items in stock'
           labelStyle = {{color: 'black'}}
           checked={this.state.isChecked}
+          underlayColor="transparent"
           onChange={() => this.handleCheckBox()}
         />
       </View>
