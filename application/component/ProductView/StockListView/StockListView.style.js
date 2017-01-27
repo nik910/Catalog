@@ -7,4 +7,6 @@ export default styles = StyleSheet.create({
     flexDirection: 'row',
     height: 150,
   },
+
+  
 })

@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 
 export default styles = StyleSheet.create({
   detailsMainBody: {
@@ -8,11 +8,37 @@ export default styles = StyleSheet.create({
   },
 
   back: {
-    height: 60,
+    ...Platform.select({
+      ios: {
+        height: 60,
+      },
+      android: {
+        height: 65,
+      }
+    }),
+
     backgroundColor:'#184ca0',
     flexDirection: 'row',
     padding: 10,
   },
+
+  // ios:{
+  //   back: {
+  //     height: 60,
+  //     backgroundColor:'#184ca0',
+  //     flexDirection: 'row',
+  //     padding: 10,
+  //   },
+  // },
+  //
+  // android: {
+  //   back: {
+  //     height: 80,
+  //     backgroundColor:'#184ca0',
+  //     flexDirection: 'row',
+  //     padding: 10,
+  //   },
+  // },
 
   details: {
     flexGrow: 10,
@@ -40,5 +66,11 @@ export default styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     padding: 10,
-  }
+  },
+
+  backButton: {
+    padding: 10,
+    width: 40,
+    height: 50,
+  },
 })

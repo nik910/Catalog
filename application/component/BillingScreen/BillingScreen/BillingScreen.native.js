@@ -33,7 +33,7 @@ export default class BillingScreen extends Component{
       <View style = {styles.back}>
         <TouchableHighlight onPress = {() => Actions.pop()}>
           <Image
-            style = {{padding: 10, width: 40, height: 50}}
+            style = {styles.backButton}
             source = {require('../../../assets/images/go_back-ileadstar.com_.png')}
           />
         </TouchableHighlight>
