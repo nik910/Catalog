@@ -2,6 +2,8 @@ import React, { Component, PropTypes } from 'react';
 import {Text, View, Button, TouchableHighlight, Image} from 'react-native';
 import {Actions} from 'react-native-router-flux';
 import styles from './ProductDetails.style';
+import TouchableImage from '../../Wrappers/TouchableImage'
+
 
 export default class ProductDetails extends Component{
   constructor(props){
@@ -20,12 +22,7 @@ export default class ProductDetails extends Component{
   renderBackButton = () => {
     return(
       <View style = {styles.back}>
-        <TouchableHighlight onPress = {() => Actions.pop()}>
-          <Image
-            style = {styles.backButton}
-            source = {require('../../assets/images/go_back-ileadstar.com_.png')}
-          />
-        </TouchableHighlight>
+        <TouchableImage style = {styles.backButton} source = {require('../../assets/images/go_back-ileadstar.com_.png')} onPress = {() => Actions.pop()}/>
       </View>
     );
   }

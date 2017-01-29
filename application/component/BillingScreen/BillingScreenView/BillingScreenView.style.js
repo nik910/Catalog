@@ -16,6 +16,7 @@ export default styles = StyleSheet.create({
   price:{
     fontSize: 15,
     color: 'black',
+    width: 150,
   },
 
   headerName:{
@@ -30,5 +31,10 @@ export default styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     width: 150,
+  },
+
+  deleteButton:{
+    width: 20,
+    height: 20
   }
 })

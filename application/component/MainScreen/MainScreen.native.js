@@ -5,7 +5,7 @@ import styles from './MainScreen.style'
 import StockSearch from '../StockSearch'
 import StockListView from '../ProductView/StockListView'
 import product from '../../data/products';
-import Touchable from '../../Wrappers/Touchable'
+import TouchableText from '../../Wrappers/TouchableText'
 
 export default class MainScreen extends React.Component {
   constructor(props) {
@@ -57,10 +57,11 @@ export default class MainScreen extends React.Component {
     if(this.state.listOfItemsToBuy.length===0){
       return(
         <View style = {styles.buttons}>
-          <Touchable
+          <TouchableText
             color={'#ed6565'}
             text={'Buy Items'}
             onPress={() => alert('No Item Selected')}
+            style = {styles.buyButton}
           />
         </View>
       );
@@ -69,9 +70,10 @@ export default class MainScreen extends React.Component {
     else{
       return(
         <View style = {styles.buttons}>
-        <Touchable
+        <TouchableText
           text={'Buy Items'}
           onPress={() => Actions.billingScreen(BillingPageDetails)}
+          style = {styles.buyButton}
         />
         </View>
       );

@@ -2,14 +2,13 @@ import {StyleSheet} from 'react-native';
 
 export default styles = StyleSheet.create({
   searchBar:{
-    marginTop: 20,
-    marginLeft: 10,
-    height: 80,
+    height: 90,
     backgroundColor:'#184ca0',
   },
 
   searchText:{
-    padding: 5,
+    padding: 10,
+    marginTop: 15,
     height: 40,
     color: 'black',
     fontWeight: 'bold',
@@ -20,5 +19,6 @@ export default styles = StyleSheet.create({
   checkbox:{
     height: 20,
     color: 'white',
+    marginLeft: 10,
   },
 })

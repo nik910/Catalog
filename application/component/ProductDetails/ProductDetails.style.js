@@ -4,7 +4,6 @@ export default styles = StyleSheet.create({
   detailsMainBody: {
     flexGrow: 1,
     flexDirection: 'column',
-    backgroundColor: 'white',
   },
 
   back: {

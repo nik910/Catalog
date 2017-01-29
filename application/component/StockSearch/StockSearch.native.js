@@ -24,8 +24,9 @@ export default class StockSearch extends React.Component {
         <CheckBox style = {styles.checkbox}
           label= 'Show items in stock'
           labelStyle = {{color: 'black'}}
-          checked={this.state.isChecked}
-          underlayColor="transparent"
+          checked = {this.state.isChecked}
+          underlayColor = "transparent"
+          checkboxStyle = {{marginLeft: 10}}
           onChange={() => this.handleCheckBox()}
         />
       </View>

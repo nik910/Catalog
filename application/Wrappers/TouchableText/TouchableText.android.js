@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import {TouchableNativeFeedback, Text} from 'react-native';
-import styles from './Touchable.style';
+import styles from './TouchableText.style';
 
-export default class Touchable extends React.Component{
+export default class TouchableText extends React.Component{
   render(){
     return(
       <TouchableNativeFeedback onPress = {this.props.onPress}>
-        <Text style = {styles.buyButton}>{this.props.text}</Text>
+        <Text style = {this.props.style}>{this.props.text}</Text>
       </TouchableNativeFeedback>
     );
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import {ListView, View, Text, TouchableHighlight} from 'react-native';
+import {ListView, View, Text} from 'react-native';
 import CheckBox from 'react-native-checkbox';
 import {Actions} from 'react-native-router-flux';
 import ProductDetails from '../../ProductDetails';
