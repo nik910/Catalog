@@ -12,7 +12,6 @@ export default class BillingScreen extends Component{
     this.state = {
       ds: new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2}),
       listOfItemsToBuy: this.props.listOfItemsToBuy,
-      bool: false,
     }
   }
 
@@ -47,7 +46,7 @@ export default class BillingScreen extends Component{
     billingContents.push(<BillingScreenView name = {'List Of Items'} price = {'Price'} id = {-1}/>)
     let totalPrice = 0;
     for(let x=0;x<listOfItemsToBuy.length;x++){
-      billingContents.push(<BillingScreenView name = {allProducts[listOfItemsToBuy[x]].name} price = {allProducts[listOfItemsToBuy[x]].price} id = {x} deleteItem = {this.deleteItem}/>);
+      billingContents.push(<BillingScreenView name = {allProducts[listOfItemsToBuy[x]].name} price = {allProducts[listOfItemsToBuy[x]].price} id = {listOfItemsToBuy[x]} deleteItem = {this.deleteItem}/>);
       let priceOfEachItem = parseFloat(allProducts[listOfItemsToBuy[x]].price.split("$")[1]);
       console.log(allProducts[listOfItemsToBuy[x]].price.split("$")[1]);
       totalPrice+=priceOfEachItem;
@@ -66,11 +65,14 @@ export default class BillingScreen extends Component{
   deleteItem = (id) => {
     console.log(id);
     let index = this.state.listOfItemsToBuy.indexOf(id);
-    // console.log(index);
+    console.log(index);
     let newArr = this.remove(this.state.listOfItemsToBuy, index);
+    console.log(newArr);
     this.setState({
       listOfItemsToBuy: newArr,
-      bool: true,
+    }, () => {
+      console.log(this.state.listOfItemsToBuy);
+      Actions.refresh();
     });
   }
 
